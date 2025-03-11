@@ -1,0 +1,54 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Car from "../Car/Car";
+import { fetchAllCars } from "../../redux/cars/operations";
+import { useDispatch } from "react-redux";
+
+export const CarsList = () => {
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  //   const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchCars() {
+      try {
+        setLoading(true);
+        const data = await fetchAllCars();
+        setCars(data);
+      } catch (error) {
+        console.error("Error fetching cars:", error);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCars();
+  }, []);
+
+  console.log(cars);
+
+  return (
+    <div>
+      <h1>Cars</h1>
+      {loading && <p>Loading data, please wait...</p>}
+      {error && (
+        <p>Whoops, something went wrong! Please try reloading this page!</p>
+      )}
+      {cars.length > 0 && (
+        <ul>
+          {cars.map(({ id, img, brand, model, rentalPrice }) => (
+            <Car
+              key={id}
+              img={img}
+              brand={brand}
+              model={model}
+              rentalPrice={rentalPrice}
+            />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
