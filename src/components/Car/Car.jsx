@@ -1,14 +1,15 @@
 import React from "react";
+import s from "./Car.module.css";
 
 const Car = ({ img, brand, model, rentalPrice }) => {
   return (
-    <div className="car-card">
-      <img src={img} alt={`${brand} ${model}`} className="car-image" />
+    <div className={s.carCard}>
+      <img src={img} alt={`${brand} ${model}`} className={s.carImage} />
       <h3>
         {brand} {model}
       </h3>
-      <p className="car-price">${rentalPrice}</p>
-      <button className="car-button">Read more</button>
+      <p className={s.carPrice}>${rentalPrice}</p>
+      <button className={s.carButton}>Read more</button>
     </div>
   );
 };

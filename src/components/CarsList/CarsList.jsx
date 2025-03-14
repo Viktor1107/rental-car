@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Car from "../Car/Car";
 import { fetchAllCars } from "../../redux/cars/operations";
 import { useDispatch } from "react-redux";
+import s from "./CarsList.module.css";
 
 export const CarsList = () => {
   const [cars, setCars] = useState([]);
@@ -30,7 +31,7 @@ export const CarsList = () => {
   console.log(cars);
 
   return (
-    <div>
+    <div className={s.carlist}>
       <h1>Cars</h1>
       {loading && <p>Loading data, please wait...</p>}
       {error && (
