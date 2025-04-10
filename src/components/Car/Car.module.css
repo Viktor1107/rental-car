@@ -6,6 +6,18 @@
   padding: 15px;
   text-align: center;
 }
+.firstSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.details {
+  flex-wrap: nowrap;
+}
 
 .carImage {
   width: 100%;

@@ -5,7 +5,7 @@ import { fetchAllCars } from "../../redux/cars/operations";
 import { useDispatch } from "react-redux";
 import s from "./CarsList.module.css";
 
-export const CarsList = () => {
+const CarsList = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -39,17 +39,42 @@ export const CarsList = () => {
       )}
       {cars.length > 0 && (
         <ul>
-          {cars.map(({ id, img, brand, model, rentalPrice }) => (
-            <Car
-              key={id}
-              img={img}
-              brand={brand}
-              model={model}
-              rentalPrice={rentalPrice}
-            />
-          ))}
+          {cars.map(
+            ({
+              id,
+              year,
+              type,
+              description,
+              fuelConsumption,
+              engineSize,
+              accessories,
+              functionalities,
+              rentalCompany,
+              address,
+              rentalConditions,
+              mileage,
+              img,
+              brand,
+              model,
+              rentalPrice,
+            }) => (
+              <Car
+                key={id}
+                img={img}
+                brand={brand}
+                year={year}
+                address={address}
+                company={rentalCompany}
+                type={type}
+                mileage={mileage}
+                model={model}
+                rentalPrice={rentalPrice}
+              />
+            )
+          )}
         </ul>
       )}
     </div>
   );
 };
+export default CarsList;
